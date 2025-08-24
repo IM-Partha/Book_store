@@ -1,10 +1,11 @@
-// index.js
-const express = require('express');
-require('dotenv').config();
-require('./Modules/Database');
-const BookRoutes = require('./Routes/Book.routes');
-const Authroutes = require('./Routes/Auth.routes');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
+require("./Modules/Database");
+const AuthRoutes = require("./Routes/Auth.routes");
+const BookRoutes = require("./Routes/Book.routes");
+
+
 
 
 
