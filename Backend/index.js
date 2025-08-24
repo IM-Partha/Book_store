@@ -1,13 +1,12 @@
 // index.js
 const express = require('express');
 require('dotenv').config();
-const connectDB = require('./Modules/Database');
+require('./Modules/Database');
 const BookRoutes = require('./Routes/Book.routes');
 const Authroutes = require('./Routes/Auth.routes');
 const cors = require('cors');
 
-// Connect to MongoDB
-connectDB();
+
 
 const index = express();
 index.use(express.json());
@@ -24,3 +23,4 @@ index.use('/ping', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 index.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
