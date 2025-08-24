@@ -7,12 +7,15 @@ import toast from 'react-hot-toast';
 import { setProducts } from "./store/cartSlice";
 import { BaseURL } from '../Api';
 
+
 const Course = () => {
   const dispatch = useDispatch();
   const [Books, setBooks] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  
 
   useEffect(() => {
     const token = localStorage.getItem("token");
