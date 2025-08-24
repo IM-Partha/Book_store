@@ -1,7 +1,7 @@
 import  { useEffect, useState } from 'react';
 import { addToCart } from './store/cartSlice';
 import { useDispatch } from "react-redux";
-import { useNavigate, Link } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { setProducts } from "./store/cartSlice";
@@ -9,7 +9,6 @@ import { BaseURL } from '../Api';
 
 const Course = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [Books, setBooks] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [loading, setLoading] = useState(false);
