@@ -18,7 +18,7 @@ const Signup = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post(`${BaseURL}/Api/signup`, userinformation, {
+      const response = await axios.post(`${BaseURL}/api/auth/register`, userinformation, {
         headers: {
           "Content-Type": "application/json"
         },
@@ -26,10 +26,11 @@ const Signup = () => {
 
       console.log(response);
 
-      if (!response.data.success) {
-        toast.error(response.data.message || "Email Already Registered");
-      } else {
+      if (response.data.success) {
         toast.success(response.data.message);
+
+      } else {
+                  toast.error(response.data.message || "Email Already Registered");
 
         // Close the modal
         document.getElementById("signup_modal").close();

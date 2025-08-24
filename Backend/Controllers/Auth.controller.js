@@ -8,10 +8,10 @@ const Register = async (req, res) => {
     const { name, email, password } = req.body;
 
     // Check if user exists
-    // const existingUser = await Auth_Data.findOne({ email });
-    // if (existingUser) {
-    //   return res.status(400).json({ message: 'User already exists' });
-    // }
+    const existingUser = await Auth_Data.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
 
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);

@@ -19,7 +19,7 @@ const Login = ({ setIsLoggedIn }) => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post(`${BaseURL}/Api/login`, userinformation, {
+      const response = await axios.post(`${BaseURL}/api/auth/login`, userinformation, {
         headers: {
           "Content-Type": "application/json"
         }
