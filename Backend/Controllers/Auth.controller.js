@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
+require('dotenv').config();
 const JWT = require('jsonwebtoken');
 const Auth_Data = require("../Modules/User.data");
-require('dotenv').config();
+
 
 const Signup = async (req, res) => {
     const { name, email, password } = req.body;

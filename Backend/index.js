@@ -2,10 +2,11 @@ const express = require('express')
 require('dotenv').config()
 const index= express()
 require('./Modules/Database')
-const cors = require('cors')
-index.use(express.json());
 const { BookRoutes } = require('./Routes/Book.routes')
 const  Authroutes  = require('./Routes/Auth.routes')
+
+const cors = require('cors')
+index.use(express.json());
 
 
 index.use(cors());
