@@ -10,8 +10,8 @@ index.use(express.json());
 
 
 index.use(cors());
-index.use('/Api',BookRoutes)// For Get Book Api
-index.use('/Api',Authroutes) // for Login And Registration 
+index.use('/api',BookRoutes)// For Get Book Api
+index.use('/api/auth',Authroutes) // for Login And Registration 
 
 /// for index Check
 index.use('/ping',(req,res)=>{
