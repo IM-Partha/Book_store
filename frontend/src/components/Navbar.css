@@ -1,0 +1,15 @@
+.navbar-container {
+  
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+  
+  }
+  
+  .navbar-container.shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  
