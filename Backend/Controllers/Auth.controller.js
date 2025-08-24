@@ -5,7 +5,7 @@ const Auth_Data = require("../Modules/User.data");
 
 
 const Signup = async (req, res) => {
-    const { name, email, password } = req.body;
+   const { name, email, password } = req.body;
   
     try {
         if (!name || !email || !password) {
@@ -40,7 +40,7 @@ const Signup = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
+        console.error("❌ Registration Error:", error);
         return res.status(500).json({
             success: false,
             message: "An error occurred during registration",

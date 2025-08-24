@@ -3,16 +3,16 @@ const mongoose = require('mongoose')
 const AuthSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,   // ✅ Corrected
+        required: true,   
     },
     email: {
         type: String,
-        required: true,   // ✅ Corrected
+        required: true,   
         unique: true
     },
     password: {
         type: String,
-        required: true,   // ✅ Corrected
+        required: true,   
     }
 })
 
