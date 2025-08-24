@@ -6,4 +6,4 @@ const BookRoutes = require('express').Router()
 
 BookRoutes.get('/',Authmiddleware,GateAllBook)
 
-module.exports={BookRoutes}
+module.exports=BookRoutes
