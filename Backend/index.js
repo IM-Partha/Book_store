@@ -10,6 +10,7 @@ const cors = require('cors');
 
 const index = express();
 index.use(express.json());
+index.use(express.urlencoded({ extended: true }));
 index.use(cors());
 
 // Routes
