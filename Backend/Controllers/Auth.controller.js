@@ -5,47 +5,56 @@ const Auth_Data = require("../Modules/User.data");
 
 
 const Signup = async (req, res) => {
-   const { name, email, password } = req.body;
-  
-    try {
-        if (!name || !email || !password) {
-            return res.status(400).json({
-                success: false,
-                message: "All fields are required",
-            });
-        }
+  try {
+    const { name, email, password } = req.body;
 
-        const findByEmail = await Auth_Data.findOne({ email });
-        if (findByEmail) {
-            return res.status(400).json({
-                success: false,
-                message: "Email already registered",
-            });
-        }
-
-        // Password Hash Create 
-        const salt = await bcrypt.genSalt(10);
-        const hashPassword = await bcrypt.hash(password, salt);
-
-        const newCreateUser = new Auth_Data({
-            name,
-            email,
-            password: hashPassword,
-        });
-
-        await newCreateUser.save();
-        return res.status(200).json({
-            success: true,
-            message: "Registered successfully",
-        });
-
-    } catch (error) {
-        console.error("❌ Registration Error:", error);
-        return res.status(500).json({
-            success: false,
-            message: "An error occurred during registration",
-        });
+    // 1. Validate input
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
     }
+
+    // 2. Check if user already exists
+    const existingUser = await Auth_Data.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: "Email already registered",
+      });
+    }
+
+    // 3. Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // 4. Save new user
+    const newUser = new Auth_Data({
+      name,
+      email,
+      password: hashedPassword,
+    });
+
+    await newUser.save();
+
+    // 5. Response
+    return res.status(201).json({
+      success: true,
+      message: "Registered successfully",
+      user: {
+        id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+      },
+    });
+  } catch (error) {
+    console.error("❌ Registration Error:", error.message);
+    return res.status(500).json({
+      success: false,
+      message: "Server error during registration",
+      error: error.message, // add error for debugging (remove in prod)
+    });
+  }
 };
 
 const Login = async (req, res) => {
