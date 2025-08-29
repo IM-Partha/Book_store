@@ -32,10 +32,12 @@ const Course = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`${BaseURL}/Api/`, {
+      const response = await axios.get(`${BaseURL}/api/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setBooks(response.data.Data);
+      
+      setBooks(response?.data?.data);
+      
       dispatch(setProducts(response.data.Data));
     } catch (error) {
       setError('Unable to load books. Please try again later.');
@@ -80,7 +82,7 @@ const Course = () => {
 
       {isLoggedIn && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12">
-          {Books.length > 0 &&
+          {Books &&
             Books.map((item, index) => (
               <div key={index} className="card bg-base-100 shadow-lg rounded-lg overflow-hidden hover:scale-105 cursor-pointer transition-all duration-300 ">
                 <figure>

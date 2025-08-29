@@ -12,6 +12,8 @@ import Signup from './components/Login-credential/Signup'
 import Cart from './components/Cart'
 import Spinner from './components/Spinner'
 import About from './components/About'
+import PaymentButton from './components/PaymentButton';
+import CheckoutPage from './components/CheckoutPage';
 function App() {
 
 
@@ -27,6 +29,8 @@ function App() {
       <Route path='/singup' element={<Signup/>} />
       <Route path='/spinner' element={<Spinner/>} />
       <Route path='/about' element={<About/>} />
+      <Route path='/paymentbutton' element={<PaymentButton/>} />
+      <Route path='/checkout' element={<CheckoutPage/>} />
     </Routes>
     <Toaster />
     <Footer/>

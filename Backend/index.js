@@ -4,7 +4,7 @@ require("dotenv").config();
 require("./Modules/Database");
 const AuthRoutes = require("./Routes/Auth.routes");
 const BookRoutes = require("./Routes/Book.routes");
-
+const paymentRoutes = require('./Routes/paymentRoutes')
 
 
 
@@ -14,9 +14,15 @@ index.use(express.json());
 index.use(express.urlencoded({ extended: true }));
 index.use(cors());
 
+
+
+
 // Routes
-index.use('/api/auth', Authroutes); // Login and Registration
+index.use('/api/auth', AuthRoutes); // Login and Registration
 index.use('/api', BookRoutes);     // Book API
+
+
+index.use('/api/payment', paymentRoutes); /// payment
 
 // Ping route to check server
 index.use('/ping', (req, res) => {

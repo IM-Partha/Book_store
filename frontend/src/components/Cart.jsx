@@ -47,7 +47,7 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <div className="text-center">
           <p className="text-lg">Your cart is empty</p>
-          <Link to="/shop" className="btn btn-primary mt-4">
+          <Link to="/course" className="btn btn-primary mt-4">
             Shop Now
           </Link>
         </div>
@@ -111,7 +111,7 @@ const Cart = () => {
               Total: ${cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}
             </h3>
             <button
-              onClick={() => navigate("/Spinner")}
+              onClick={() => navigate("/checkout")}
               className="btn btn-primary"
             >
               Proceed to Checkout
