@@ -7,23 +7,23 @@ const PaymentButton = ({ amount }) => {
 
   const handlePayment = async () => {
     try {
-      // 1. Create order from backend
+     
       const { data: order } = await axios.post(
         "http://localhost:3000/api/payment/orders",
         { amount }
       );
 
-      // 2. Setup Razorpay checkout options
+      
       const options = {
         key: "rzp_test_RBCZxW2LPPhd00", // use your test key
         amount: order.amount,
         currency: order.currency,
         name: "Book Store",
         description: "Purchase Books",
-        order_id: order.id, // important
+        order_id: order.id, 
         handler: async function (response) {
           try {
-            // 3. Verify payment
+           
             const verifyRes = await axios.post(
               "http://localhost:3000/api/payment/verify",
               {
@@ -36,19 +36,17 @@ const PaymentButton = ({ amount }) => {
             if (verifyRes.data.success) {
               toast.success("✅ Payment Successful!");
 
-              // Redirect to home after short delay
               setTimeout(() => {
+                
                 navigate("/");
-
-                // one-time refresh
                 window.location.reload();
               }, 1000);
             } else {
-              toast.error("❌ Payment verification failed!");
+              toast.error(" Payment verification failed!");
             }
           } catch (err) {
             console.error(err);
-            toast.error("⚠️ Error verifying payment!");
+            toast.error(" Error verifying payment!");
           }
         },
         theme: { color: "#3399cc" },
@@ -59,7 +57,7 @@ const PaymentButton = ({ amount }) => {
       rzp.open();
     } catch (error) {
       console.error(error);
-      toast.error("⚠️ Error creating payment order!");
+      toast.error("Error creating payment order!");
     }
   };
 

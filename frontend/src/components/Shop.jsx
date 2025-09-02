@@ -19,7 +19,7 @@ const Course = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
+    
     if (token) {
       setIsLoggedIn(true);  
       fetchBooks(token); 
@@ -32,10 +32,10 @@ const Course = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`${BaseURL}/api/`, {
+      const response = await axios.get(`${BaseURL}/api/books`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      
+      console.log(response)
       setBooks(response?.data?.data);
       
       dispatch(setProducts(response.data.Data));

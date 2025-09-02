@@ -27,19 +27,19 @@ const Cart = () => {
   // Handle Increase Quantity
   const handleIncreaseQuantity = (id, name) => {
     dispatch(increaseQuantity(id));
-    toast.success(`Increased quantity of ${name}`, {
-      duration: 2000,
-      position: "top-right",
-    });
+    // toast.success(`Increased quantity of ${name}`, {
+    //   duration: 2000,
+    //   position: "top-right",
+    // });
   };
 
   // Handle Decrease Quantity
   const handleDecreaseQuantity = (id, name) => {
     dispatch(decreaseQuantity(id));
-    toast.success(`Decreased quantity of ${name}`, {
-      duration: 1000,
-      position: "top-center",
-    });
+    // toast.success(`Decreased quantity of ${name}`, {
+    //   duration: 1000,
+    //   position: "top-center",
+    // });
   };
 
   return (
@@ -47,7 +47,7 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <div className="text-center">
           <p className="text-lg">Your cart is empty</p>
-          <Link to="/course" className="btn btn-primary mt-4">
+          <Link to="/shop" className="btn btn-primary mt-4">
             Shop Now
           </Link>
         </div>

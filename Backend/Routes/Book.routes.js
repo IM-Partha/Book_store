@@ -4,6 +4,6 @@ const { Authmiddleware } = require('../Middleware/Auth.middleware')
 
 const BookRoutes = require('express').Router()
 
-BookRoutes.get('/',Authmiddleware,GateAllBook)
+BookRoutes.get('/books',Authmiddleware,GateAllBook)
 
 module.exports=BookRoutes

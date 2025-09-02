@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Added useNavigate hook
+import { Link, useNavigate } from "react-router-dom"; 
 import "./Navbar.css";
 import Login from "./Login-credential/Login";
 import Signup from "./Login-credential/Signup";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate(); 
   const itemcounter = useSelector((state) => state.cart.cartItems);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token") !== null);
@@ -26,7 +26,7 @@ const Navbar = () => {
   const navItems = (
     <>
       <li><Link to={"/"}>Home</Link></li>
-      <li><Link to={"/course"}>Shop</Link></li>
+      <li><Link to={"/shop"}>Shop</Link></li>
       <li><Link to={"/about"}>About</Link></li>
       <li className="indicator">
         <Link to={'/cart'}>

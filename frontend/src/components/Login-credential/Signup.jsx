@@ -24,13 +24,14 @@ const Signup = () => {
         },
       });
 
-      console.log(response);
 
       if (response.data.success) {
         toast.success(response.data.message);
+        document.getElementById("signup_modal").close();
+        window.location.href = "/login";
 
       } else {
-                  toast.error(response.data.message || "Email Already Registered");
+        toast.success(response.data.message );
 
         // Close the modal
         document.getElementById("signup_modal").close();
