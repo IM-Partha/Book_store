@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import  { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; 
 import "./Navbar.css";
 import Login from "./Login-credential/Login";
 import Signup from "./Login-credential/Signup";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchQuery } from "./store/searchSlice";
+
+
 
 const Navbar = () => {
   const navigate = useNavigate(); 
@@ -12,7 +15,8 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token") !== null);
 
   const products = useSelector((state)=>state.cart)
-  console.log(products)
+  const dispatch = useDispatch()
+  const query = useSelector((state)=>state.search.query) 
   
 
   // Handle Logout
@@ -82,8 +86,11 @@ const Navbar = () => {
                 </g>
               </svg>
               <input
-              onChange={(e) => setSearchTerm(e.target.value)}
-              type="search" className="grow outline-none rounded-md px-1 w-50 dark:bg-slate-900 dark:text-white" placeholder="Search" />
+              onChange={(e) => dispatch(setSearchQuery(e.target.value))}
+              // onChange={(e) => setSearchTerm(e.target.value)}
+              type="search" 
+              value={query}
+              className="grow outline-none rounded-md px-1 w-50 dark:bg-slate-900 dark:text-white" placeholder="Search" />
             </label>
           </div>
 
